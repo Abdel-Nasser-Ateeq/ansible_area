@@ -1,0 +1,14 @@
+---
+
+- hosts: all 
+  become: true
+  vars:
+    ansible_python_interpreter: auto_silent
+  tasks:
+
+  - name: install apache2 package
+    apt:
+      name: 
+        - apache2
+        - libapache2-mod-php
+      state: latest
