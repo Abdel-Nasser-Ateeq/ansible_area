@@ -1,0 +1,2 @@
+cat /etc/os-release  		:used to get the OS specs
+
