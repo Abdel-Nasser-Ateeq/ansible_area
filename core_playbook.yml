@@ -1,0 +1,47 @@
+---
+#Play 1:
+- hosts: web_servers 
+  become: true
+  vars:
+    ansible_python_interpreter: auto_silent
+  tasks:
+
+  - name: install apache2 package
+    apt:
+      tags: web_server
+      name: 
+        - apache2
+      state: latest
+
+  - name: install php package
+    apt:
+      name:
+        - libapache2-mod-php
+      state: latest
+
+#Play 2:
+- hosts: db_servers
+  become: true
+  vars:
+    ansible_python_interpreter: auto_silent
+  tasks:
+
+  - name: install mariadb package
+    apt:
+      tags: db
+      name:
+        - mariadb
+      state: latest
+
+#Play 3:
+- hosts: file_servers
+  become: true
+  vars:
+    ansible_python_interpreter: auto_silent
+
+  tasks:
+  - name: install samba package
+    apt:
+      name:
+        - samba
+      state: latest
