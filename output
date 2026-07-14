@@ -1,0 +1,40 @@
+ansible-playbook --ask-become-pass playbooks/1_playbook.yml
+
+PLAY [all] *********************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [192.168.159.132]
+[ERROR]: Task failed: Timeout (12s) waiting for privilege escalation prompt:
+fatal: [192.168.159.137]: UNREACHABLE! => {"changed": false, "msg": "Task failed: Timeout (12s) waiting for privilege escalation prompt:", "unreachable": true}
+fatal: [192.168.159.135]: UNREACHABLE! => {"changed": false, "msg": "Task failed: Timeout (12s) waiting for privilege escalation prompt:", "unreachable": true}
+
+TASK [install apache2 package] *************************************************
+ok: [192.168.159.132]
+
+PLAY RECAP *********************************************************************
+192.168.159.132            : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+192.168.159.135            : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+192.168.159.137            : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+
+ansible -m ping all
+192.168.159.132 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.14"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+192.168.159.137 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.14"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+192.168.159.135 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.14"
+    },
+    "changed": false,
+    "ping": "pong"
+}
