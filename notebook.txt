@@ -1,3 +1,15 @@
+git status
+git add *
+git commit -m "folders restructure"
+git push origin main
+
 cat /etc/os-release  		:used to get the OS specs
 
 ansible-playbook --ask-become-pass install_apache.yml
+git status
+git add *
+git commit -m "folders restructure"
+git push origin main 
+use ctrl+k to remove a line in nano
+to get the 1st line and execute it --> head -n 1 notebook.txt | bash
+head -n 4 notebook.txt | bash
