@@ -1,2 +1,3 @@
 cat /etc/os-release  		:used to get the OS specs
 
+ansible-playbook --ask-become-pass install_apache.yml

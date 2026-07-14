@@ -1,0 +1,55 @@
+---
+
+#Play 0:
+- hosts: all
+  become: true
+  vars:
+    ansible_python_interpreter: auto_silent
+  tasks:
+
+  - name: update repository index
+    apt:
+      update_cache: yes
+
+
+#Play 1:
+- hosts: web_servers 
+  become: true
+  vars:
+    ansible_python_interpreter: auto_silent
+  tasks:
+
+  - name: install apache and php pkg
+    tags: web,apache
+    apt:
+      name: 
+        - apache2
+        - libapache2-mod-php
+      state: latest
+
+#Play 3:
+- hosts: db_servers
+  become: true
+  vars:
+    ansible_python_interpreter: auto_silent
+  tasks:
+
+  - name: install mariadb package
+    tags: db,mariadb
+    apt:
+      name:
+        - mariadb
+      state: latest
+
+#Play 4:
+- hosts: file_servers
+  become: true
+  vars:
+    ansible_python_interpreter: auto_silent
+
+  tasks:
+  - name: install samba package
+    tags: file,samba
+    apt:
+      name: samba
+      state: latest
