@@ -1,0 +1,59 @@
+[ERROR]: Task failed: Module failed: '/usr/bin/apt-get -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" -o DPkg::Lock::Timeout=60       install 'tmux=3.6a-2ubuntu0.1'' failed: E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied)
+E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root?
+
+Origin: <adhoc 'apt' task>
+
+{'action': 'apt', 'args': {'name': 'tmux'}, 'timeout': 0, 'async_val': 0, 'poll': 15}
+
+192.168.159.138 | FAILED! => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.14"
+    },
+    "cache_update_time": 1784101577,
+    "cache_updated": false,
+    "changed": false,
+    "msg": "'/usr/bin/apt-get -y -o \"Dpkg::Options::=--force-confdef\" -o \"Dpkg::Options::=--force-confold\" -o DPkg::Lock::Timeout=60       install 'tmux=3.6a-2ubuntu0.1'' failed: E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied)\nE: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root?\n",
+    "rc": 100,
+    "stderr": "E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied)\nE: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root?\n",
+    "stderr_lines": [
+        "E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied)",
+        "E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root?"
+    ],
+    "stdout": "",
+    "stdout_lines": []
+}
+[ERROR]: Task failed: Module failed: Command '/usr/bin/apt-mark manual tmux' failed.
+Origin: <adhoc 'apt' task>
+
+{'action': 'apt', 'args': {'name': 'tmux'}, 'timeout': 0, 'async_val': 0, 'poll': 15}
+
+192.168.159.135 | FAILED! => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.14"
+    },
+    "changed": false,
+    "msg": "Command '/usr/bin/apt-mark manual tmux' failed.",
+    "rc": 100,
+    "stderr": "E: Could not create temporary file for /var/lib/apt/extended_states - mkstemp (13: Permission denied)\nE: Failed to write temporary StateFile /var/lib/apt/extended_states\n",
+    "stderr_lines": [
+        "E: Could not create temporary file for /var/lib/apt/extended_states - mkstemp (13: Permission denied)",
+        "E: Failed to write temporary StateFile /var/lib/apt/extended_states"
+    ],
+    "stdout": "",
+    "stdout_lines": []
+}
+192.168.159.137 | FAILED! => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.14"
+    },
+    "changed": false,
+    "msg": "Command '/usr/bin/apt-mark manual tmux' failed.",
+    "rc": 100,
+    "stderr": "E: Could not create temporary file for /var/lib/apt/extended_states - mkstemp (13: Permission denied)\nE: Failed to write temporary StateFile /var/lib/apt/extended_states\n",
+    "stderr_lines": [
+        "E: Could not create temporary file for /var/lib/apt/extended_states - mkstemp (13: Permission denied)",
+        "E: Failed to write temporary StateFile /var/lib/apt/extended_states"
+    ],
+    "stdout": "",
+    "stdout_lines": []
+}
