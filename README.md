@@ -1,2 +1,2 @@
 # ansible_area
-hello people 
+under ansible area we can find playbooks with labs
