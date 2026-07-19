@@ -1,19 +1,32 @@
 ---
+- hosts: all
+  become: true
+  vars:
+    ansible_python_interpreter: auto_silent
+  tasks:
+
+  - name: install updates for all
+    tags: always
+    apt:
+      upgrade: dist
+      update_cache: yes
+
 #Play 1:
-- hosts: web_servers 
+- hosts: db_servers 
   become: true
   vars:
     ansible_python_interpreter: auto_silent
   tasks:
 
   - name: install apache2 package
+    tags: web_server,apache
     apt:
-      tags: web_server
       name: 
         - apache2
       state: latest
 
   - name: install php package
+    tags: web
     apt:
       name:
         - libapache2-mod-php
@@ -27,10 +40,10 @@
   tasks:
 
   - name: install mariadb package
+    tags: db, mariadb
     apt:
-      tags: db
       name:
-        - mariadb
+        - mariadb-server
       state: latest
 
 #Play 3:

@@ -2,6 +2,7 @@
 
 - hosts: all 
   become: true
+  gather_facts: true
   vars:
     ansible_python_interpreter: auto_silent
   tasks:
@@ -12,8 +13,9 @@
         - apache2
       state: latest
 
-  - name: install php package
+  - name: install tmux
     apt:
       name:
-        - libapache2-mod-php
+        - tmux
       state: latest
+    when: ansible_facts['nodename'] == "web" 
