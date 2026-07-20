@@ -15,3 +15,4 @@ to get the 1st line and execute it --> head -n 1 notebook.txt | bash
 head -n 4 notebook.txt | bash
 
 apt list --installed <package-name>: Lists the specific package if it is installed.
+ansible all -m gather_facts 

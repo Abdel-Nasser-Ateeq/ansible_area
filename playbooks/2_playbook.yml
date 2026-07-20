@@ -12,10 +12,11 @@
       name: 
         - apache2
       state: latest
+    when: ansible_facts['nodename'] == "webserver"
 
   - name: install tmux
     apt:
       name:
         - tmux
       state: latest
-    when: ansible_facts['nodename'] == "web" 
+    when: ansible_facts['nodename'] == "webserver" 
