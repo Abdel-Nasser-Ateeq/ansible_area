@@ -6,7 +6,7 @@
     ansible_python_interpreter: auto_silent
   tasks:
 
-  - name: Remove  apache2 package
+  - name: Remove apache2 package
     apt:
       name: 
         - apache2

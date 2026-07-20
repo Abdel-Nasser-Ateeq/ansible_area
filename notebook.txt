@@ -16,3 +16,11 @@ head -n 4 notebook.txt | bash
 
 apt list --installed <package-name>: Lists the specific package if it is installed.
 ansible all -m gather_facts 
+
+>> Vertical split: Press Ctrl + b then %
+>> Horizontal split: Press Ctrl + b then "
+
+Move focus : Press Ctrl + b followed by any Arrow Key (Up, Down, Left, Right) to switch to that pane
+Adjust size: Press Ctrl + b, then hold down the Arrow Key in the direction you want to expand the border
+
+Close active pane: Press Ctrl + b then x, then press y to confirm.
