@@ -1,0 +1,29 @@
+---
+
+
+#Play 1 --> only for web_servers
+- hosts: web_servers
+  become: true
+  vars:
+    ansible_python_interpreter: auto_silent
+  tasks:
+
+  - name: install libapache2, apache2 packages
+    apt:
+      name:
+        - libapache2-mod-php
+        - apache2
+      state: latest
+
+
+- hosts: db_servers
+  become: true
+  vars:
+    ansible_python_interpreter: auto_silent
+  tasks:
+
+  - name: install mariadb package
+    apt:
+      name:
+        - mariadb-server
+      state: latest
