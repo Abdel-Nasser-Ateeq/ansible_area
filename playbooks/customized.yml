@@ -1,6 +1,5 @@
 ---
 
-
 #Play 1 --> only for web_servers
 - hosts: web_servers
   become: true
@@ -15,7 +14,7 @@
         - apache2
       state: latest
 
-
+#play 2 --> only for DataBase Servers
 - hosts: db_servers
   become: true
   vars:
