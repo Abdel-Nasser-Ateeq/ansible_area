@@ -3,6 +3,7 @@
 #Play 1 --> only for web_servers
 - hosts: web_servers
   become: true
+  gather_facts: no
   vars:
     ansible_python_interpreter: auto_silent
   tasks:
@@ -12,11 +13,45 @@
       name:
         - libapache2-mod-php
         - apache2
+        - apache2-bin
+        - apache2-data
       state: latest
+
+
+#Play 2 --> only for web_servers
+- hosts: web_servers
+  become: true
+  vars:
+    ansible_python_interpreter: auto_silent
+  tasks:
+
+  - name: disable apache2 service
+    service:
+      name: apache2
+      enabled: yes
+      state: started
+    when: ansible_facts['nodename'] == "webserver"
+
+
+
+#Play 2 --> only for web_servers
+- hosts: db_servers
+  become: true
+  vars:
+    ansible_python_interpreter: auto_silent
+  tasks:
+
+  - name: disable mariadb service on database
+    service:
+      name: mariadb
+      enabled: no
+      state: stopped
+    when: ansible_facts['nodename'] == "database"
 
 #play 2 --> only for DataBase Servers
 - hosts: db_servers
   become: true
+  gather_facts: no
   vars:
     ansible_python_interpreter: auto_silent
   tasks:
