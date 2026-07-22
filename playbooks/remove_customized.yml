@@ -3,26 +3,63 @@
 #Play 1 --> only for web_servers
 - hosts: web_servers
   become: true
+  gather_facts: no
   vars:
     ansible_python_interpreter: auto_silent
   tasks:
 
-  - name: Remove libapache2, apache2 packages
+  - name: Remove apache2-bin package
+    tags: bin 
     apt:
       name:
-        - libapache2-mod-php
-        - apache2
+        - apache2-bin
       state: absent
 
-#play 2 --> only for DataBase Servers
-- hosts: db_servers
+
+#Play 2 --> only for web_servers
+- hosts: web_servers
   become: true
+  gather_facts: no
   vars:
     ansible_python_interpreter: auto_silent
   tasks:
 
-  - name: Remove mariadb package
+  - name: Remove apache2-data package
+    tags: data
     apt:
       name:
-        - mariadb-server
+        - apache2-data
+      state: absent
+
+
+
+#Play 3 --> only for web_servers
+- hosts: web_servers
+  become: true
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: auto_silent
+  tasks:
+
+  - name: Remove libapache2-mod-php8.5  package
+    tags: php
+    apt:
+      name:
+        - libapache2-mod-php8.5
+      state: absent
+
+
+#play 4 --> only for DataBase Servers
+- hosts: db_servers
+  become: true
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: auto_silent
+  tasks:
+
+  - name: Remove mariadb-server-core package
+    tags: core
+    apt:
+      name:
+        - mariadb-server-core
       state: absent

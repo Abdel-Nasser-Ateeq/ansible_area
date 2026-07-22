@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: true
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: auto_silent
+  tasks: 
+  - name: copy file to web_server
+    copy:
+      src: /home/ateeq/ansible_area/playbooks/remove_customized.yml
+      dest: /home/ateeq/inbox
+      owner: ateeq
+      group: ateeq
